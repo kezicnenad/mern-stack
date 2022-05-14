@@ -1,52 +1,32 @@
-let express = require("express");
-let mongoose = require("mongoose");
-const dotenv = require("dotenv");
-let cors = require("cors");
-let bodyParser = require("body-parser");
+// const express = require('express');
+import express from 'express';
+import routes from './routes/artikliRoutes';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
-dotenv.config();
-
-// Express Route
-const userRoute = require("./routes/User.route");
-
-// Connecting mongoDB Database
-mongoose
-  .connect(process.env.ATLAS_URI)
-  .then((x) => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
-  })
-  .catch((err) => {
-    console.error("Error connecting to mongo", err.reason);
-  });
 const app = express();
+const PORT = 5000;
+
+// MONGOOSE CONNECTION
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb+srv://admin:Nesher7384@server.8f37l.mongodb.net/mernStackBackend?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+// BODYPARSER SETUP
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://mern-stack-crud-server.herokuapp.com",
-    ],
-    credentials: true,
-  })
-);
+routes(app);
 
-app.use("/users", userRoute);
-app.use("/services", require("./routes/Service.route"));
+// SERVING STATIC FILES
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.send('API Server');
-})
-
-// PORT
-const port = process.env.PORT || 5000;
-const server = app.listen(port, () => {
-  console.log("Connected to port " + port);
 });
+
+app.listen(PORT, () => {
+  console.log('Server is running on port', PORT)
+})
