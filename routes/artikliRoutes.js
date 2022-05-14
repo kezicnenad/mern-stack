@@ -1,4 +1,4 @@
-import { dodajNoviArtikl, dohvatiArtikle, dohvatiJedanArtikl, updateJedanArtikl, izbrisiJedanArtikl } from '../controllers/artikliController'
+import { dodajNoviArtikl, dohvatiArtikle, dohvatiJedanArtikl, updateJedanArtikl, izbrisiJedanArtikl } from '../controllers/artikliController.js'
 
 const routes = (app) => {
   app.route('/artikli')

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { ArtiklSchema } from '../models/artikliModel'
+import { ArtiklSchema } from '../models/artikliModel.js'
 
 const Artikl = mongoose.model('Artikl', ArtiklSchema)
 

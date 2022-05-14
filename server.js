@@ -1,11 +1,10 @@
-// const express = require('express')
 import express from 'express'
-import routes from './routes/artikliRoutes'
+import routes from './routes/artikliRoutes.js'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 
 const app = express()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 // MONGOOSE CONNECTION
 mongoose.Promise = global.Promise
