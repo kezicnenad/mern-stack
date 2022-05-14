@@ -12,6 +12,7 @@ router.route("/").post((req, res, next) => {
       return next(error);
     } else {
       res.json(data);
+      console.log("User added");
     }
   });
 });

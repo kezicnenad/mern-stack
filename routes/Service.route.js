@@ -1,37 +1,74 @@
-const router = require("express").Router();
-const Service = require("../models/Service");
+let mongoose = require("mongoose"),
+  express = require("express"),
+  router = express.Router();
 
-router.post("/", async (req, res) => {
-  try {
-    const { name, description, logo, link } = req.body;
+// Service Model
+let serviceSchema = require("../models/Service");
 
-    const newService = new Service({
-      name,
-      description,
-      logo,
-      link
-    });
-
-    const savedService = await newService.save();
-
-    res.json(savedService);
-    console.log("Service added");
-
-  } catch (err) {
-    console.log(err);
-    res.status(500).send();
-  }
+// Create Service
+router.route("/").post((req, res) => {
+  serviceSchema.create(req.body, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
+      console.log('Service added');
+    }
+  });
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const services = await Service.find();
-    console.log("Service loaded succesfully");
-    res.json(services);
-  } catch (err) {
-    console.log(err);
-    res.status(500).send();
-  }
+// READ Services
+router.route("/").get((req, res) => {
+  serviceSchema.find((error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+// Get Single Service
+router.route("/:id").get((req, res) => {
+  serviceSchema.findById(req.params.id, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+// Update Service
+router.route("/:id").put((req, res, next) => {
+  serviceSchema.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: req.body,
+    },
+    (error, data) => {
+      if (error) {
+        return next(error);
+        console.log(error);
+      } else {
+        res.json(data);
+        console.log("Service updated successfully !");
+      }
+    }
+  );
+});
+
+// Delete Service
+router.route("/:id").delete((req, res, next) => {
+  serviceSchema.findByIdAndRemove(req.params.id, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.status(200).json({
+        msg: data,
+      });
+    }
+  });
 });
 
 module.exports = router;
