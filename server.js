@@ -1,14 +1,17 @@
 let express = require("express");
 let mongoose = require("mongoose");
+const dotenv = require("dotenv");
 let cors = require("cors");
 let bodyParser = require("body-parser");
+
+dotenv.config();
 
 // Express Route
 const userRoute = require("./routes/User.route");
 
 // Connecting mongoDB Database
 mongoose
-  .connect("mongodb+srv://admin:Nesher7384@server.8f37l.mongodb.net/mernStackBackend?retryWrites=true&w=majority")
+  .connect(process.env.ATLAS_URI)
   .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`

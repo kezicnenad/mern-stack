@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const serviceSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    service_name: { type: String, required: true },
     description: { type: Number, required: true },
     logo: { type: Number, required: true },
     link: { type: String, required: true },
   },
   {
-    collection: "users",
+    collection: "services",
   }
 );
 
