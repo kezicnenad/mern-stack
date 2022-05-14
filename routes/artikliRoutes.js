@@ -1,4 +1,4 @@
-import { dodajNoviArtikl, dohvatiArtikle, dohvatiJedanArtikl, updateJedanArtikl, izbrisiJedanArtikl } from '../controllers/artikliController';
+import { dodajNoviArtikl, dohvatiArtikle, dohvatiJedanArtikl, updateJedanArtikl, izbrisiJedanArtikl } from '../controllers/artikliController'
 
 const routes = (app) => {
   app.route('/artikli')
@@ -6,11 +6,11 @@ const routes = (app) => {
       // MIDDLEWARE
       console.log(`Request from: ${req.originalUrl}`)
       console.log(`Request type: ${req.method}`)
-      next();
+      next()
     }, dohvatiArtikle)
 
     // POST ENDPOINT
-    .post(dodajNoviArtikl);
+    .post(dodajNoviArtikl)
 
   app.route("/artikli/:id")
     // DOHVAĆA SPECIFIČNI ARTIKL
@@ -20,7 +20,7 @@ const routes = (app) => {
     .put(updateJedanArtikl)
 
     // BRIŠE SPECIFIČNI ARTIKL
-    .delete(izbrisiJedanArtikl);
+    .delete(izbrisiJedanArtikl)
 }
 
-export default routes;
+export default routes
