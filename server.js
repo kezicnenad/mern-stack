@@ -33,16 +33,14 @@ app.use(cookieParser());
 // STRIPE PAYING
 stripe(process.env.STRIPE_PRIVATE_KEY)
 
-const paymentIntent = await stripe.paymentIntents.create({
-  amount: 500,
-  currency: "gbp",
-  payment_method: "pm_card_visa",
-});
-
-
 // HEADER BASED MECHANISM THAT ALLOWS TO INDICATE ANY ORIGINS, DOMAIN, SCHEME OR PORT
 app.use(
-  cors()
+  cors({
+    origin: [
+      "https://kezicnenad.netlify.app",
+    ],
+    credentials: true,
+  })
 );
 
 // BODYPARSER SETUP
