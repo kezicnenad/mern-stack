@@ -35,8 +35,9 @@ const ensureToken = (req, res, next) => {
     req.token = bearerToken;
     next();
   } else {
-    res.sendStatus(403);
-    console.log('Neovlašten upad');
+    res.sendStatus(403)
+    console.log("Neovlašten upad korištenjem metode", req.method.toString().toLowerCase(), 'na lokaciji', (req.originalUrl).toString().slice(1));
+
   }
 };
 
