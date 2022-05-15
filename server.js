@@ -42,15 +42,7 @@ const paymentIntent = await stripe.paymentIntents.create({
 
 // HEADER BASED MECHANISM THAT ALLOWS TO INDICATE ANY ORIGINS, DOMAIN, SCHEME OR PORT
 app.use(
-  cors({
-    origin: [
-      "http://localhost:5000",
-      "http://localhost:3000",
-      // "https://mernstackanje.herokuapp.com",
-      // "https://kezicnenad.netlify.app",
-    ],
-    credentials: true,
-  })
+  cors()
 );
 
 // BODYPARSER SETUP
