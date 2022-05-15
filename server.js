@@ -1,6 +1,7 @@
 // MODULES IMPORT AND VARIABLES
 import express from 'express'
-import routes from './routes/artikliRoutes.js'
+import routesArtikli from "./routes/artikliRoutes.js";
+import routesApartmani from "./routes/apartmaniRoutes.js";
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
@@ -41,7 +42,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // ROUTES
-routes(app)
+routesArtikli(app);
+routesApartmani(app);
 
 // SERVING STATIC FILES
 app.use(express.static('public'))
