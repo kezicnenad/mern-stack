@@ -87,15 +87,15 @@ export const ApartmanSchema = new Schema({
     required: "Dizalo",
   },
   galerija: {
-    type: Array,
+    type: Number,
     required: "Unesi galeriju",
   },
   blizina: {
-    type: Array,
+    type: Number,
     required: "Unesi objekte u blizini",
   },
   recenzije: {
-    type: Array,
+    type: Number,
     required: "Unesi recenziju",
   },
 });
