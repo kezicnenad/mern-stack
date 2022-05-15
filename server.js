@@ -6,7 +6,7 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // DEFINE EXPRESS.JS
 const app = express()
@@ -52,6 +52,6 @@ app.get('/', (req, res) => {
 })
 
 // SETUP SERVER
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Server is running on port", process.env.PORT || 5000);
+app.listen(port, () => {
+  console.log("Server is running on port", port);
 })
