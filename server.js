@@ -31,7 +31,11 @@ app.use(cookieParser());
 // HEADER BASED MECHANISM THAT ALLOWS TO INDICATE ANY ORIGINS, DOMAIN, SCHEME OR PORT
 app.use(
   cors({
-    origin: ["http://localhost:5000", "http://localhost:3000"],
+    origin: [
+      "http://localhost:5000",
+      "http://localhost:3000",
+      "https://mernstackanje.herokuapp.com",
+    ],
     credentials: true,
   })
 );
