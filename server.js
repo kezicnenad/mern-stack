@@ -46,8 +46,8 @@ app.use(
     origin: [
       "http://localhost:5000",
       "http://localhost:3000",
-      "https://mernstackanje.herokuapp.com",
-      "https://kezicnenad.netlify.app",
+      // "https://mernstackanje.herokuapp.com",
+      // "https://kezicnenad.netlify.app",
     ],
     credentials: true,
   })
