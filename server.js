@@ -1,6 +1,5 @@
 // MODULES IMPORT AND VARIABLES
 import express from 'express'
-import routesArtikli from "./routes/artikliRoutes.js";
 import routesApartmani from "./routes/apartmaniRoutes.js";
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
@@ -42,7 +41,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // ROUTES
-routesArtikli(app);
 routesApartmani(app);
 
 // SERVING STATIC FILES
