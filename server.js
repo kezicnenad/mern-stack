@@ -14,6 +14,9 @@ const app = express()
 // .ENV CONFIGURATION
 dotenv.config();
 
+// .ENV TOKEN CONFIG
+process.env.TOKEN_SECRET;
+
 // MONGOOSE CONNECTION
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.ATLAS_URI, {
@@ -26,10 +29,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 // HEADER BASED MECHANISM THAT ALLOWS TO INDICATE ANY ORIGINS, DOMAIN, SCHEME OR PORT
-app.use(cors({
-  origin: ["http://localhost:5000"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:5000", "http://localhost:3000"],
+    credentials: true,
+  })
+);
 
 // BODYPARSER SETUP
 app.use(bodyParser.urlencoded({ extended: true }))

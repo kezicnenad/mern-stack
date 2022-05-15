@@ -1,26 +1,43 @@
 import { dodajNoviArtikl, dohvatiArtikle, dohvatiJedanArtikl, updateJedanArtikl, izbrisiJedanArtikl } from '../controllers/artikliController.js'
 
 const routes = (app) => {
-  app.route('/artikli')
-    .get((req, res, next) => {
-      // MIDDLEWARE
-      console.log(`Request from: ${req.originalUrl}`)
-      console.log(`Request type: ${req.method}`)
-      next()
-    }, dohvatiArtikle)
+  app
+    .route("/artikli")
+    .get(
+      ensureToken,
+      (req, res, next) => {
+        // MIDDLEWARE
+        next();
+      },
+      dohvatiArtikle
+    )
 
     // POST ENDPOINT
-    .post(dodajNoviArtikl)
+    .post(ensureToken, dodajNoviArtikl);
 
-  app.route("/artikli/:id")
+  app
+    .route("/artikli/:id")
     // DOHVAĆA SPECIFIČNI ARTIKL
-    .get(dohvatiJedanArtikl)
+    .get(ensureToken, dohvatiJedanArtikl)
 
     // NADOGRAĐUJE SPECIFIČNI ARTIKL
-    .put(updateJedanArtikl)
+    .put(ensureToken, updateJedanArtikl)
 
     // BRIŠE SPECIFIČNI ARTIKL
-    .delete(izbrisiJedanArtikl)
+    .delete(ensureToken, izbrisiJedanArtikl);
 }
+
+const ensureToken = (req, res, next) => {
+  const bearerHeader = req.headers["authorization"];
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    res.sendStatus(403);
+    console.log('Neovlašten upad');
+  }
+};
 
 export default routes
