@@ -8,9 +8,13 @@ const routes = (app) => {
     [2, { priceInCents: 10, name: "Lekcija #2" }],
   ]);
 
+  // POST METODA ZA PLAĆANJE PUTEM STRIPE, TREBA SREDIT SUCCESS I CANCEL PAGES/ROUTES
   app.post("/izvrsi-placanje", ensureToken, async (req, res) => {
     try {
+      // STRIPE TOKEN
       const placanje = stripe(process.env.TEST_STRIPE_SECRET_KEY);
+
+      // VRSTA PLAĆANJA, IZNOS, KOLIČINA I SLIČNO VEZANO ZA PLAĆANJE NARUDŽBE
       const session = await placanje.checkout.sessions.create({
         payment_method_types: ["card"],
         mode: "payment",
@@ -27,6 +31,7 @@ const routes = (app) => {
             quantity: item.quantity,
           };
         }),
+        // PREUSMJERI NAKON USPJEŠNOG/NEUSPJEŠNOG PLAĆANJA
         success_url: `${process.env.CLIENT_URL}/`,
         cancel_url: `${process.env.CLIENT_URL}/greska/`,
       });
@@ -38,6 +43,7 @@ const routes = (app) => {
   });
 };
 
+// JSON WEB TOKEN ENCRYPTION
 const ensureToken = (req, res, next) => {
   const bearerHeader = req.headers["authorization"];
   if (typeof bearerHeader !== "undefined") {

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { ApartmanSchema } from '../models/apartmaniModel.js'
+import { ApartmanSchema } from '../models/__exampleModel.js'
 import jwt from 'jsonwebtoken'
 
 const Apartman = mongoose.model("Apartman", ApartmanSchema);

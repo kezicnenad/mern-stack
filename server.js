@@ -1,6 +1,5 @@
 // MODULES IMPORT AND VARIABLES
 import express from 'express'
-import routesApartmani from "./routes/apartmaniRoutes.js";
 import routesPlacanje from "./routes/placanjeRoutes.js";
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
@@ -38,6 +37,7 @@ app.use(
   cors({
     origin: [
       "https://kezicnenad.netlify.app",
+      "http://localhost:3000"
     ],
     credentials: true,
   })
@@ -48,7 +48,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // ROUTES
-routesApartmani(app);
 routesPlacanje(app);
 
 // SERVING STATIC FILES

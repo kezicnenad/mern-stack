@@ -4,7 +4,7 @@ import {
   dohvatiJedanApartman,
   updateJedanApartman,
   izbrisiJedanApartman,
-} from "../controllers/apartmaniController.js";
+} from "../controllers/__exampleController.js";
 
 const routes = (app) => {
   app
