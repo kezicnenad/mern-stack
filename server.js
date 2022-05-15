@@ -1,11 +1,13 @@
 // MODULES IMPORT AND VARIABLES
 import express from 'express'
 import routesApartmani from "./routes/apartmaniRoutes.js";
+import routesPlacanje from "./routes/placanjeRoutes.js";
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import stripe from 'stripe'
 const port = process.env.PORT || 5000;
 
 // DEFINE EXPRESS.JS
@@ -28,6 +30,9 @@ mongoose.connect(process.env.ATLAS_URI, {
 app.use(express.json());
 app.use(cookieParser());
 
+// STRIPE PAYING
+stripe(process.env.STRIPE_PRIVATE_KEY)
+
 // HEADER BASED MECHANISM THAT ALLOWS TO INDICATE ANY ORIGINS, DOMAIN, SCHEME OR PORT
 app.use(
   cors({
@@ -46,6 +51,7 @@ app.use(bodyParser.json())
 
 // ROUTES
 routesApartmani(app);
+routesPlacanje(app);
 
 // SERVING STATIC FILES
 app.use(express.static('public'))
