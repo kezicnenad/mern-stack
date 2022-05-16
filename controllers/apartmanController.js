@@ -37,7 +37,7 @@ export const dohvatiFilterApartmana = (req, res) => {
   });
 };
 
-export const dohvatiJedanApartman = (req, res) => {
+export const dohvatiApartman = (req, res) => {
   Apartman.findById(req.params.id, (err, apartman) => {
     if (err) {
       res.send(err);
@@ -47,7 +47,7 @@ export const dohvatiJedanApartman = (req, res) => {
   });
 };
 
-export const updateJedanApartman = (req, res) => {
+export const updateApartman = (req, res) => {
   Apartman.findOneAndUpdate(
     { _id: req.params.id },
     req.body,
@@ -62,7 +62,7 @@ export const updateJedanApartman = (req, res) => {
   );
 };
 
-export const izbrisiJedanApartman = (req, res) => {
+export const izbrisiApartman = (req, res) => {
   Apartman.deleteOne({ _id: req.params.id }, (err, apartman) => {
     if (err) {
       res.send(err);

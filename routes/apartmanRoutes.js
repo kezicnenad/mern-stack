@@ -2,9 +2,9 @@ import {
   dodajNoviApartman,
   dohvatiApartmane,
   dohvatiFilterApartmana,
-  dohvatiJedanApartman,
-  updateJedanApartman,
-  izbrisiJedanApartman,
+  dohvatiApartman,
+  updateApartman,
+  izbrisiApartman,
 } from "../controllers/apartmanController.js";
 
 const routes = (app) => {
@@ -36,13 +36,13 @@ const routes = (app) => {
   app
     .route("/apartmani/:id")
     // DOHVAĆA SPECIFIČNI Apartman
-    .get(ensureToken, dohvatiJedanApartman)
+    .get(ensureToken, dohvatiApartman)
 
     // NADOGRAĐUJE SPECIFIČNI Apartman
-    .put(ensureToken, updateJedanApartman)
+    .put(ensureToken, updateApartman)
 
     // BRIŠE SPECIFIČNI Apartman
-    .delete(ensureToken, izbrisiJedanApartman);
+    .delete(ensureToken, izbrisiApartman);
 }
 
 const ensureToken = (req, res, next) => {
