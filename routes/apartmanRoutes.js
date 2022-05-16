@@ -2,7 +2,7 @@ import {
   dodajNoviApartman,
   dohvatiApartmane,
   dohvatiApartman,
-  dohvatiApartmaneOcjenaVecaOdCetri,
+  dohvatiApartmaneOcjenaVecaOdTri,
   dohvatiApartmaneIzMjesta,
   updateApartman,
   izbrisiApartman,
@@ -30,7 +30,7 @@ const routes = (app) => {
       // MIDDLEWARE
       next();
     },
-    dohvatiApartmaneOcjenaVecaOdCetri
+    dohvatiApartmaneOcjenaVecaOdTri
   );
 
   // KATEGORIZIRANJE (SVI IZ GRADA: PLOČE)

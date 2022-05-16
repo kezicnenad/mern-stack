@@ -27,8 +27,8 @@ export const dohvatiApartmane = (req, res) => {
   });
 };
 
-export const dohvatiApartmaneOcjenaVecaOdCetri = (req, res) => {
-  Apartman.find({ ocjena: { $gt: 4 } }, (err, apartman) => {
+export const dohvatiApartmaneOcjenaVecaOdTri = (req, res) => {
+  Apartman.find({ ocjena: { $gt: 3 } }, (err, apartman) => {
     if (err) {
       res.send(err);
     }
