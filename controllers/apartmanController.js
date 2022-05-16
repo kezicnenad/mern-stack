@@ -37,9 +37,8 @@ export const dohvatiApartmaneOcjenaVecaOdCetri = (req, res) => {
   });
 };
 
-
 export const dohvatiApartmaneIzMjesta = (req, res) => {
-  Apartman.find({ mjesto: { $eq: "Ploče" } }, (err, apartman) => {
+  Apartman.find({ postanski_broj: { $eq: req.params.postanskiBroj } }, (err, apartman) => {
     if (err) {
       res.send(err);
     }

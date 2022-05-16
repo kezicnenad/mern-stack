@@ -1,9 +1,9 @@
 import {
   dodajNoviApartman,
   dohvatiApartmane,
+  dohvatiApartman,
   dohvatiApartmaneOcjenaVecaOdCetri,
   dohvatiApartmaneIzMjesta,
-  dohvatiApartman,
   updateApartman,
   izbrisiApartman,
 } from "../controllers/apartmanController.js";
@@ -34,7 +34,7 @@ const routes = (app) => {
   );
 
   // KATEGORIZIRANJE (SVI IZ GRADA: PLOČE)
-  app.route("/apartmani/mjesto/ploce").get(
+  app.route("/apartmani/mjesto/:postanskiBroj").get(
     ensureToken,
     (req, res, next) => {
       // MIDDLEWARE
