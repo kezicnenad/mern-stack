@@ -1,7 +1,8 @@
 import {
   dodajNoviApartman,
   dohvatiApartmane,
-  dohvatiFilterApartmana,
+  dohvatiApartmaneOcjenaVecaOdCetri,
+  dohvatiApartmaneIzMjesta,
   dohvatiApartman,
   updateApartman,
   izbrisiApartman,
@@ -22,14 +23,24 @@ const routes = (app) => {
     // POST ENDPOINT
     .post(ensureToken, dodajNoviApartman);
 
-
+  // KATEGORIZIRANJE (SVE OCJENE VEĆE OD 4)
   app.route("/apartmani/ocjena").get(
     ensureToken,
     (req, res, next) => {
       // MIDDLEWARE
       next();
     },
-    dohvatiFilterApartmana
+    dohvatiApartmaneOcjenaVecaOdCetri
+  );
+
+  // KATEGORIZIRANJE (SVI IZ GRADA: PLOČE)
+  app.route("/apartmani/mjesto/ploce").get(
+    ensureToken,
+    (req, res, next) => {
+      // MIDDLEWARE
+      next();
+    },
+    dohvatiApartmaneIzMjesta
   );
 
   app

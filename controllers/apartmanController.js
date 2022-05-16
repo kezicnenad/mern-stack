@@ -27,8 +27,19 @@ export const dohvatiApartmane = (req, res) => {
   });
 };
 
-export const dohvatiFilterApartmana = (req, res) => {
-  Apartman.find({ ocjena: { $gt: 3 } }, (err, apartman) => {
+export const dohvatiApartmaneOcjenaVecaOdCetri = (req, res) => {
+  Apartman.find({ ocjena: { $gt: 4 } }, (err, apartman) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(apartman);
+    console.log("Apartmani učitani");
+  });
+};
+
+
+export const dohvatiApartmaneIzMjesta = (req, res) => {
+  Apartman.find({ mjesto: { $eq: "Ploče" } }, (err, apartman) => {
     if (err) {
       res.send(err);
     }
