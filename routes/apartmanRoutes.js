@@ -1,10 +1,11 @@
 import {
   dodajNoviApartman,
   dohvatiApartmane,
+  dohvatiFilterApartmana,
   dohvatiJedanApartman,
   updateJedanApartman,
   izbrisiJedanApartman,
-} from "../controllers/__exampleController.js";
+} from "../controllers/apartmanController.js";
 
 const routes = (app) => {
   app
@@ -16,6 +17,17 @@ const routes = (app) => {
         next();
       },
       dohvatiApartmane
+    )
+
+  app
+    .route("/apartmani/ocjena")
+    .get(
+      ensureToken,
+      (req, res, next) => {
+        // MIDDLEWARE
+        next();
+      },
+      dohvatiFilterApartmana
     )
 
     // POST ENDPOINT

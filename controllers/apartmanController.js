@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { ApartmanSchema } from '../models/__exampleModel.js'
+import { ApartmanSchema } from '../models/apartmanModel.js'
 import jwt from 'jsonwebtoken'
 
 const Apartman = mongoose.model("Apartman", ApartmanSchema);
@@ -19,6 +19,16 @@ export const dodajNoviApartman = (req, res) => {
 
 export const dohvatiApartmane = (req, res) => {
   Apartman.find({}, (err, apartman) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(apartman);
+    console.log("Apartmani učitani");
+  });
+};
+
+export const dohvatiFilterApartmana = (req, res) => {
+  Apartman.find({ ocjena: { $gt: 3 } }, (err, apartman) => {
     if (err) {
       res.send(err);
     }

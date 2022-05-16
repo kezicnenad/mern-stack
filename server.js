@@ -1,6 +1,6 @@
 // MODULES IMPORT AND VARIABLES
 import express from 'express'
-import routesOMeni from "./routes/oMeniRoutes.js";
+import routesApartman from "./routes/apartmanRoutes.js";
 import routesPlacanje from "./routes/placanjeRoutes.js";
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // ROUTES
-routesOMeni(app);
+routesApartman(app);
 routesPlacanje(app);
 
 // SERVING STATIC FILES
