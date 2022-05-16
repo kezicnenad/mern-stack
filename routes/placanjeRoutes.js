@@ -33,7 +33,7 @@ const routes = (app) => {
         }),
         // PREUSMJERI NAKON USPJEŠNOG/NEUSPJEŠNOG PLAĆANJA
         success_url: `${process.env.CLIENT_URL}/`,
-        cancel_url: `${process.env.CLIENT_URL}/greska/`,
+        cancel_url: `${process.env.CLIENT_URL}/`,
       });
       res.json({ url: session.url });
       console.log("Success");
