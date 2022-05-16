@@ -19,19 +19,18 @@ const routes = (app) => {
       dohvatiApartmane
     )
 
-  app
-    .route("/apartmani/ocjena")
-    .get(
-      ensureToken,
-      (req, res, next) => {
-        // MIDDLEWARE
-        next();
-      },
-      dohvatiFilterApartmana
-    )
-
     // POST ENDPOINT
     .post(ensureToken, dodajNoviApartman);
+
+
+  app.route("/apartmani/ocjena").get(
+    ensureToken,
+    (req, res, next) => {
+      // MIDDLEWARE
+      next();
+    },
+    dohvatiFilterApartmana
+  );
 
   app
     .route("/apartmani/:id")
