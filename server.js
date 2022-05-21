@@ -2,6 +2,7 @@
 import express from 'express'
 import routesApartman from "./routes/apartmanRoutes.js";
 import routesPlacanje from "./routes/placanjeRoutes.js";
+import routesOMeni from "./routes/oMeniRoutes.js";
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
@@ -51,6 +52,7 @@ app.use(bodyParser.json())
 // ROUTES
 routesApartman(app);
 routesPlacanje(app);
+routesOMeni(app);
 
 // SERVING STATIC FILES
 app.use(express.static('public'))
