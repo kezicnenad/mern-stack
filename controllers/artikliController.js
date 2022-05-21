@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { ArtiklSchema } from '../models/__exampleModel.js'
+import { ArtiklSchema } from '../models/artikliModel.js'
 import jwt from 'jsonwebtoken'
 
 const Artikl = mongoose.model("Artikl", ArtiklSchema);
