@@ -4,7 +4,7 @@ import {
   dohvatiJedanArtikl,
   updateJedanArtikl,
   izbrisiJedanArtikl,
-} from "../controllers/__exampleController.js";
+} from "../controllers/artikliController.js";
 
 const routes = (app) => {
   app
