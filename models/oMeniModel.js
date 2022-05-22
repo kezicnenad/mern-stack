@@ -2,100 +2,40 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const OMeniSchema = new Schema({
-  naziv: {
+  ime: {
     type: String,
-    required: "Unesi naziv",
-  },
-  vlasnik: {
-    type: String,
-    required: "Unesi vlasnika",
-  },
-  postanski_broj: {
-    type: Number,
-    required: "Unesi broj pošte",
-  },
-  mjesto: {
-    type: String,
-    required: "Unesi mjesto",
-  },
-  adresa: {
-    type: String,
-    required: "Unesi adresu",
-  },
-  opis: {
-    type: String,
-    required: "Unesi vlasnika",
-  },
-  telefon: {
-    type: Number,
-    required: "Unesi vlasnika",
+    required: "Unesi ime",
   },
   mail: {
     type: String,
     required: "Unesi mail",
   },
-  web: {
+  telefon: {
     type: String,
-    required: "Unesi web adresu",
+    required: "Unesi telefon",
   },
-  zvjezdice: {
-    type: Number,
-    required: "Unesi broj zvjezdica",
+  url: {
+    type: String,
+    required: "Unesi url",
   },
-  ocjena: {
-    type: Number,
-    required: "Unesi ocjenu",
+  github: {
+    type: String,
+    required: "Unesi GitHub",
   },
-  povrsina: {
-    type: Number,
-    required: "Unesi povrsinu",
+  linkedin: {
+    type: String,
+    required: "Unesi linkedIn",
   },
-  broj_soba: {
-    type: Number,
-    required: "Unesi broj soba",
+  zanimanje: {
+    type: String,
+    required: "Unesi zanimanje",
   },
-  broj_kreveta: {
-    type: Number,
-    required: "Unesi broj kreveta",
+  o_meni: {
+    type: String,
+    required: "Unesi o meni",
   },
-  kuhinja: {
-    type: Boolean,
-    required: "Kuhinja",
-  },
-  perilica: {
-    type: Boolean,
-    required: "Perilica",
-  },
-  parking: {
-    type: Boolean,
-    required: "Parking",
-  },
-  wifi: {
-    type: Boolean,
-    required: "WiFi",
-  },
-  ljubimci: {
-    type: Boolean,
-    required: "Ljubimci",
-  },
-  etaza: {
-    type: Number,
-    required: "Unesi etažu",
-  },
-  dizalo: {
-    type: Boolean,
-    required: "Dizalo",
-  },
-  galerija: {
-    type: Number,
-    required: "Unesi galeriju",
-  },
-  blizina: {
-    type: Number,
-    required: "Unesi objekte u blizini",
-  },
-  recenzije: {
-    type: Number,
-    required: "Unesi recenziju",
-  },
+  slika: {
+    type: String,
+    required: "Unesi sliku",
+  }
 });
