@@ -6,7 +6,7 @@ export const StaticSchema = new Schema({
     type: String,
     required: "Unesi kategoriju",
   },
-  naziv: {
+  naslov: {
     type: String,
     required: "Unesi naziv",
   },
@@ -14,5 +14,5 @@ export const StaticSchema = new Schema({
     type: String,
     required: "Unesi opis",
   },
-  usluge: [{ naziv: String, opis: String, ikona: String }],
+  usluge: [{ kategorija: String, naziv: String, opis: String, slika: String }],
 });
